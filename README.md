@@ -1,50 +1,50 @@
-AeroTouch AI: Intelligent Gesture Control System
-Developed by: Hussein Hafez
+# 🚀 H-Gesture-Engine
+### *Master your Desktop with Air-Magic*
 
-📌 Project Overview
-AeroTouch AI is a high-performance, hand-gesture control system that transforms a standard webcam into a sophisticated input device. Leveraging Computer Vision (MediaPipe) and advanced signal filtering (Kalman Filter), this tool allows for seamless desktop interaction without physical hardware.
+[![Python Version](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![Mediapipe](https://img.shields.io/badge/AI-Mediapipe-green.svg)](https://mediapipe.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![OpenCV](https://img.shields.io/badge/Library-OpenCV-orange.svg)](https://opencv.org/)
 
-The project is designed with stability and performance in mind, making it suitable for professional workflows, presentations, or accessibility needs.
+**H-Gesture-Engine** is a high-performance, AI-driven human-computer interaction tool. It transforms a standard webcam into a sophisticated gesture-recognition sensor, allowing you to control your mouse, volume, and scrolling without touching a single piece of hardware.
 
-🚀 Key Features
-Precision Cursor Tracking: Uses a Kalman Filter to eliminate jitter and provide cinema-smooth mouse movement.
+---
 
-Multimodal Interaction: Automatically switches between 3 distinct modes:
+## 🌟 Key Highlights
 
-Mouse Mode: Precision movement and "Pinch-to-Drag" selection.
+* **🎬 Cinematic Smoothing:** Implements a **Kalman Filter** to eliminate sensor noise and provide butter-smooth cursor movements.
+* **🧠 Intelligent State Machine:** Context-aware gesture recognition that switches between Mouse, Scroll, and Media modes seamlessly.
+* **⚡ Zero-Latency Logic:** Optimized for real-time performance using MediaPipe's Lite-complexity models.
+* **🖱️ Virtual Drag & Drop:** Integrated "Pinch-to-Drag" logic for selecting text or moving windows.
 
-Scroll Mode: Vertical scrolling using dual-finger gestures + Right-click support.
+---
 
-Media Mode: Real-time volume control via horizontal hand translation.
+## 🎮 Gestures & Controls
 
-State Stability System: Implements a confirmation counter to prevent accidental clicks or mode hopping.
+| Action | Hand Gesture | Mode |
+| :--- | :--- | :--- |
+| **Move Cursor** | ☝️ Index Finger Up | Mouse Mode |
+| **Left Click / Drag** | 🤏 Index + Thumb Pinch | Selection |
+| **Scroll Up/Down** | ✌️ Index + Middle Fingers | Scroll Mode |
+| **Right Click** | ✂️ Pinch Index & Middle | Context Menu |
+| **Volume Up/Down** | 🖐️ Three Fingers Up + Move | Media Mode |
+| **App Launcher** | ✊ Fist (All fingers down) | Custom Action |
 
-Low Latency: Optimized for 60 FPS performance using MediaPipe's Lite model complexity.
+---
 
-🛠 Tech Stack
-Language: Python 3.11+
+## 🛠️ Technical Deep Dive
 
-Vision: OpenCV, MediaPipe
+The core of the engine relies on the **Kalman Filter** algorithm to predict and smooth the hand landmarks. The state of the system is estimated through:
 
-Automation: PyAutoGUI
+$$\hat{x}_{k} = \hat{x}_{k-1} + G_k (z_k - \hat{x}_{k-1})$$
 
-Mathematics: NumPy (for coordinate mapping and interpolation)
+Where $G_k$ is the Kalman Gain, ensuring that sudden camera "glitches" or lighting changes don't cause the cursor to jump uncontrollably.
 
-📋 Prerequisites
-Ensure you have the following libraries installed:
+---
 
-Bash
-pip install opencv-python mediapipe numpy pyautogui
-🎮 How to Use
-Mouse Movement: Raise only your Index Finger.
+## 🚀 Quick Start
 
-Left Click & Drag: Bring your Thumb close to your index finger while in Mouse Mode.
-
-Scroll Mode: Raise Index and Middle fingers. Move hand up/down to scroll.
-
-Right Click: Pinch your Index and Middle fingers together while in Scroll Mode.
-
-Volume Control: Raise Index, Middle, and Ring fingers. Move hand Left (Decrease) or Right (Increase).
-
-⚙️ Technical Logic
-The system maps the camera coordinates (640x480) to the monitor resolution using Linear Interpolation. To ensure the user can reach the corners of the screen easily, a Safe Margin (100px) is applied to the camera feed.
+### 1. Clone the repository
+```bash
+git clone [https://github.com/h98m/H-Gesture-Engine.git](https://github.com/h98m/H-Gesture-Engine.git)
+cd H-Gesture-Engine
